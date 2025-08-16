@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binaya Giri | Civil Engineer Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Binaya Giri—Civil Engineer skilled in structural analysis, AutoCAD, ETABS, and construction management." />
+    <style>
+        :root {
+            --primary: #1e3d59;
+            --secondary: #f5f9fc;
+            --accent: #ff914d;
+            --text: #2b2b2b;
+            --muted: #6b7280;
+            --card: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            background: var(--secondary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 18px 20px;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            overflow: hidden;
+            background: #0f2a3d;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .brand h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .brand p {
+            font-size: .9rem;
+            color: #e6edf3;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 16px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, .12);
+            transform: translateY(-1px);
+        }
+
+       
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+      
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background: var(--primary);
+            position: absolute;
+            top: 64px;
+            right: 0;
+            width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+        }
+
+        .mobile-nav a {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 0;
+            color: white;
+        }
+
+        .hero {
+            display: grid;
+            gap: 14px;
+            padding: 26px 20px 10px;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.4rem, 2.2vw + 1rem, 2rem);
+            font-weight: 800;
+        }
+
+        .sub {
+            color: #e6edf3;
+            font-size: .95rem;
+        }
+
+        section {
+            max-width: 1080px;
+            margin: 18px auto;
+            padding: 28px 20px;
+            opacity: 0;
+            transform: translateY(18px);
+            transition: all .6s ease;
+            scroll-margin-top: 100px;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section h3 {
+            display: inline-block;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 6px;
+            color: var(--primary);
+            margin-bottom: 14px;
+            font-size: clamp(1.1rem, 2vw + .6rem, 1.4rem);
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .06);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, .10);
+        }
+
+        .grid {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        
+        .pill {
+            display: inline-block;
+            margin: 6px 6px 0 0;
+            padding: 8px 12px;
+            background: #eef5fb;
+            border-radius: 999px;
+            font-size: .92rem;
+            font-weight: 600;
+            transition: transform .2s ease, box-shadow .2s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .06);
+        }
+
+        .pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
+        }
+
+        .timeline {
+            border-left: 3px solid #e5e7eb;
+            padding-left: 16px;
+        }
+
+        .tl-item {
+            margin-bottom: 18px;
+        }
+
+        .tl-item h4 {
+            margin-bottom: 4px;
+        }
+
+        .tl-item .when {
+            font-size: .92rem;
+            color: var(--muted);
+        }
+
+        
+        footer {
+            text-align: center;
+            padding: 24px 20px;
+            color: #fff;
+            background: var(--primary);
+            margin-top: 16px;
+        }
+
+        .links a {
+            display: inline-block;
+            margin-right: 8px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            background: rgba(255, 255, 255, .12);
+            padding: 10px 12px;
+            border-radius: 12px;
+            transition: background .2s ease, transform .2s ease;
+            background-color: black;
+            cursor: pointer;
+        }
+
+        .links a:hover {
+            transform: scale(1.1);
+        }
+
+        .contact a {
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .topcontainernav {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .15);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .hello {
+            padding-bottom: 120px;
+        }
+
+        .justinfo {
+            background-color: white;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="topcontainernav">
+            <div class="container topbar">
+                <div class="brand">
+
+                    <div>
+                        <h1>Binaya Giri</h1>
+                        <p>Civil Engineer</p>
+                    </div>
+                </div>
+                <nav aria-label="Primary">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#education">Education</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="mobile-nav" id="mobileNav">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <div class="hello"></div>
+
+        <div style="text-align: center;" class="container hero justinfo">
+            <h2 style="color: black;">Designing resilient structures and delivering quality on site.</h2>
+            <p class="sub" style="color: black;">I specialize in modern design methodologies, field investigation,
+                documentation, and turning
+                technical insights into practical solutions.</p>
+            <div class="links" style="margin-top:8px;">
+                
+                <a href="https://www.linkedin.com/in/binayagiri/" target="_blank" rel="noopener">LinkedIn</a>
+		<a href="https://github.com/binayagiri" target="_blank" rel="noopener">GitHub</a>
+                <a href="#contact">Hire Me</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+     
+        <section id="about" style="text-align: center;">
+            <h3>About Me</h3>
+            <div style="text-align: center;" class="card">
+                
+                <p>High-achieving professional with expertise in civil engineering. Demonstrated success working
+                    independently and in team-driven environments to meet challenging targets and timelines on
+                    simultaneous priority projects. Skilled in modern design methodologies, field investigation with
+                    different methods, documentation of the work, and synthesizing technical interpretations and
+                    conclusions. Well-versed in conducting research, engaging in lab testing, troubleshooting, and
+                    resolving technical issues.</p>
+		<p><a href="CV-Binaya-Giri.pdf" download class="pill"
+                        style="text-align: center; background: var(--accent); color: white; text-decoration:none;">📄 Download CV</a></p>
+            </div>
+        </section>
+
+    
+        <section id="skills" style="text-align: center;">
+            <h3>Skills</h3>
+            <div class="card">
+                <div class="grid">
+                    <div>
+                        <h4>Software</h4>
+                        <p>
+                            <span class="pill">AutoCAD</span>
+                            <span class="pill">ETABS</span>
+                            <span class="pill">CSi SAFE</span>
+                            <span class="pill">Google Earth Engine</span>
+                            <span class="pill">MS Office</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h4>Equipment</h4>
+                        <p>
+                            <span class="pill">Total Station</span>
+                            <span class="pill">Theodolite</span>
+                            <span class="pill">Auto-level Machine</span>
+                            <span class="pill">Compass</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h4>Core</h4>
+                        <p>
+                            <span class="pill">2D/3D Drawings</span>
+                            
+                            
+                            <span class="pill">Construction Management</span>
+                            <span class="pill">Procurement &amp; E-bidding</span>
+                                                    </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+     
+        <section id="projects" style="text-align: center;">
+            <h3>Projects</h3>
+            <div class="card">
+                <div class="grid">
+                    <div>
+                        <h4>Detail design and structural analysis of truss bridge</h4>
+                        <p class="muted">Institute Of Engineering, Tribhuvan University • Coordinated by LRBP Nepal</p>
+                        <p>Performed detailed modeling and analysis of a truss bridge system with emphasis on structural
+                            behavior, member sizing, and serviceability checks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" style="text-align: center;">
+            <h3>Professional Experience</h3>
+            <div class="card timeline">
+                <div class="tl-item">
+                    <h4>Civil Engineer Intern — Bishow Bijaya Engineering Consultancy</h4>
+                    <div class="when">July 2024 – Present</div>
+                    <ul>
+                        <li style="list-style-position: inside;">Oversaw construction works for conformance with drawings, specifications, and safety
+                            standards.</li>
+                        <li  style="list-style-position: inside;">Prepared/reviewed structural &amp; architectural drawings, BOQs, and calculations (AutoCAD,
+                            ETABS, SAP2000).</li>
+                        <li  style="list-style-position: inside;">Produced detailed reports, estimates, valuations, and technical documents for clients,
+                            banks, and authorities.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+      
+        <section id="education" style="text-align: center;">
+            <h3>Education</h3>
+            <div class="card">
+                <p><strong>Bachelor in Civil Engineering</strong> — Khwopa College of Engineering (TU), Bhaktapur, Nepal
+                </p>
+                <p class="muted">Sep 2019 – Jun 2024</p>
+            </div>
+        </section>
+
+  
+        <section id="contact" style="text-align: center;">
+            <h3>Contact</h3>
+            <div class="card contact">
+                <p>Email: <a href="mailto:binaya99giri@gmail.com">binaya99giri@gmail.com</a></p>
+                <p>Phone: <a href="tel:+9779822512096">+977 9822512096</a></p>
+                <h4 style="margin-top:20px;">Send a Message</h4>
+                <form action="https://formspree.io/f/xwpqzwda" method="POST"
+                    style="display:grid; gap:10px; margin-top:10px;">
+                    <input type="text" name="name" placeholder="Your Name" required
+                        style="padding:10px; border-radius:6px; border:1px solid #ccc;">
+                    <input type="email" name="email" placeholder="Your Email" required
+                        style="padding:10px; border-radius:6px; border:1px solid #ccc;">
+                    <textarea name="message" rows="4" placeholder="Your Message" required
+                        style="padding:10px; border-radius:6px; border:1px solid #ccc;"></textarea>
+                    <button type="submit"
+                        style="padding:10px; background:var(--primary); color:#fff; border:none; border-radius:6px; font-weight:600; cursor:pointer;">Send</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Binaya Giri</p>
+        </div>
+    </footer>
+
+    <script>
+       
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('show');
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+
+     
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        hamburger.addEventListener('click', () => {
+            mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
+        });
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
